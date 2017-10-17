@@ -2,8 +2,12 @@
 
 <nav>
   <ul>
-    <li> <%= link_to "Login", login_path %> </li>
-    <li> <%= link_to "Register", new_user_path %> </li>
-    <li> <%= link_to "Logout", logout_path %> </li>
+    <% if session[:user_id] == nil %>
+      <li> <%= link_to "Login", login_path %> </li>
+      <li> <%= link_to "Register", new_user_path %> </li>
+    <% elsif session[:user_id] %>
+      <li> <%= button_to "Logout", { action: 'destroy', controller: 'sessions' }, method: :delete  %>
+    <% end %>
+    </li>
   </ul>
 </nav>
