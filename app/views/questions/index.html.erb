@@ -1,13 +1,31 @@
-<h1>We hate celery, yes we do</h1>
+<section>
 
-<nav>
-  <ul>
-    <% if session[:user_id] == nil %>
-      <li> <%= link_to "Login", login_path %> </li>
-      <li> <%= link_to "Register", new_user_path %> </li>
-    <% elsif session[:user_id] %>
-      <li> <%= button_to "Logout", { action: 'destroy', controller: 'sessions' }, method: :delete  %>
-    <% end %>
-    </li>
-  </ul>
-</nav>
+  <h1>We hate celery, yes we do</h1>
+
+  <nav>
+    <ul>
+      <% if session[:user_id] == nil %>
+        <li> <%= link_to "Login", login_path %> </li>
+        <li> <%= link_to "Register", new_user_path %> </li>
+      <% elsif session[:user_id] %>
+        <li> <%= button_to "Logout", { action: 'destroy', controller: 'sessions' }, method: :delete  %>
+      <% end %>
+      </li>
+    </ul>
+  </nav>
+
+<% @questions.each do |question| %>
+
+  <div class="">
+      <h3> <%= link_to question.topic , question_path(question) %> </h3>
+  </div>
+
+<% end %>
+
+
+
+
+
+
+
+</section>
